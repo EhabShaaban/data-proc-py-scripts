@@ -4,26 +4,17 @@ version: 2.1
 orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
-  
 jobs:
   print_hello:
     docker:
       - image: circleci/node:13.8.0
-#         auth:
-#           username: mydockerhub-user
-#           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - run: echo "Hello"
-      
   print_world:
     docker:
       - image: circleci/node:13.8.0
-#         auth:
-#           username: mydockerhub-user
-#           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - run: echo ", World!"
-            
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
