@@ -16,7 +16,11 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo $CIRCLE_BRANCH
+      - run:
+          name: "echo bunch of stuff"
+          command:
+              echo $CIRCLE_BRANCH
+              echo $MY_NAME
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
