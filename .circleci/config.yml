@@ -19,8 +19,6 @@ jobs:
       - run:
           name: "echo bunch of stuff"
           command:
-              echo $CIRCLE_BRANCH
-          command:
               echo $MY_NAME
 # Orchestrate or schedule a set of jobs
 workflows:
