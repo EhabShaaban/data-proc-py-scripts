@@ -12,12 +12,29 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo ", World!"
+  save_output_file:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo "saved text in da file!" > output.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - output.txt
+          
+  cat_output_file:    
+      docker:
+        - image: circleci/node:13.8.0
+      steps:
+        - attach_workspace:
+          at: ~/
+        - run: cat ~/output.txt
   print_my_name:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - run:
-          name: "echo bunch of stuff"
+          name: "echo mein Name und so..."
           command:
               echo $MY_NAME
 # Orchestrate or schedule a set of jobs
@@ -29,4 +46,7 @@ workflows:
       - print_hello
       - print_world:
           requires: [print_hello]
+      - save_output_file
+      - cat_output_file:
+          requires: [save_output_file]
       - print_my_name
