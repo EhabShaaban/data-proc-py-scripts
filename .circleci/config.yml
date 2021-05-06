@@ -58,6 +58,15 @@ jobs:
         - run: echo "your turn!"
         - print_pipeline_id
         
+  fail_that_job:
+    <<: *defaults
+    steps:  
+      - run: return 1
+      - run:
+          name: on error
+          command: echo "Hello Error!"
+          when: on_fail
+        
 workflows:
   welcome:
     jobs:
@@ -70,3 +79,4 @@ workflows:
       - print_my_name
       - now_you_go:
           requires: [cat_output_file]
+      - fail_that_job
