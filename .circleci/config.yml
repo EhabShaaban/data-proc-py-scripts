@@ -26,12 +26,12 @@ jobs:
           paths:
             - output.txt
             
-  cat_output_file:    
-    <<: *defaults
-      steps:
-        - attach_workspace:
-            at: ~/
-        - run: cat ~/output.txt
+#   cat_output_file:    
+#     <<: *defaults
+#       steps:
+#         - attach_workspace:
+#             at: ~/
+#         - run: cat ~/output.txt
         
   print_my_name:
     <<: *defaults
