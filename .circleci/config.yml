@@ -5,6 +5,16 @@ defaults: &defaults
   
 version: 2.1
 
+commands:
+  print_pipeline_id:
+    description: "simple hay!"
+    parameters:
+      to:
+        type: string
+        default: $CIRCLE_WORKFLOW_ID
+    steps:
+      - run: echo << parameters.to >>
+
 jobs:
 
   print_hello:
@@ -42,6 +52,7 @@ jobs:
     <<: *defaults
     steps:
         - run: echo "your turn!"
+        - print_pipeline_id
         
 workflows:
   welcome:
