@@ -38,10 +38,10 @@ jobs:
     steps:
         - run: echo $MY_NAME   
         
-  now_you_go:
-    <<: *defaults
-    steps:
-        - run: echo "your turn!"
+#   now_you_go:
+#     <<: *defaults
+#     steps:
+#         - run: echo "your turn!"
         
 workflows:
   welcome:
@@ -50,8 +50,8 @@ workflows:
       - print_world:
           requires: [print_hello]
       - save_output_file
-      - cat_output_file:
-          requires: [save_output_file]
+#       - cat_output_file:
+#           requires: [save_output_file]
       - print_my_name
-      - now_you_go:
-          requires: [cat_output_file]
+#       - now_you_go:
+#           requires: [cat_output_file]
