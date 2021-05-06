@@ -33,7 +33,6 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-        - name: "echo mein Name und so..."
         - run: echo $MY_NAME
 # Orchestrate or schedule a set of jobs
 workflows:
